@@ -1,5 +1,7 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .main {
@@ -8,6 +10,8 @@
   height: 100vh;
   width: 100%;
   background-color: #c8decb;
+  align-items: center;
+  justify-content: center;
 }
 
 header {
@@ -30,12 +34,55 @@ section {
 
 .product--list {
   list-style: none;
-  height: 15rem;
-  width: 10rem;
+  background-color: rgba(250, 250, 250, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 13rem;
+  width: 13rem;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
   margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.product--name {
+  display: flex;
+  align-items: center;
+  height: 20%;
+  padding: 3px;
 }
 
 .product--img {
   height: 10rem;
   width: 10rem;
+}
+
+a {
+  text-decoration: none;
+  color: #418253;
+}
+
+form {
+  margin: 10px;
+}
+
+form > input,
+form > button {
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: solid 1px #6bce85;
+}
+
+.search--product {
+  padding: 3px;
+  border-radius: 3px 0 0 3px;
+}
+
+.search--button {
+  border-radius: 0 3px 3px 0;
+  background-color: #6bce85;
 }

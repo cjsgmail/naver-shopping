@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [data, setData] = useState([]);
-  const [item, setItem] = useState("신발");
+  const [item, setItem] = useState("모자");
   const shoppingData = async () => {
     const URL = "/v1/search/shop.json";
 
@@ -45,20 +45,24 @@ function App() {
           name="title"
           className="search--product"
         ></input>
-        <input type="submit" className="search--button" value="search"></input>
+        <button type="submit" className="search--button">
+          search
+        </button>
       </form>
       <section>
         <div className="product--container">
           <ul className="products">
             {data.map((el) => {
-              const title = el.title.slice(0, el.title.indexOf("<"));
+              let title = el.title.replace(/\<b>/g, "");
+              title = title.replace(/\<\/b>/g, "");
+              let dotTilte = title.slice(0, 12) + " ...";
               return (
                 <a href={el.link} key={el.productId}>
                   <li className="product--list">
                     <div className="product--img--container">
                       <img src={el.image} className="product--img"></img>
                     </div>
-                    <div className="product--name">{title}</div>
+                    <div className="product--name">{dotTilte}</div>
                   </li>
                 </a>
               );
