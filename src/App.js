@@ -1,11 +1,15 @@
 import "./App.css";
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import ReactTooltip from "react-tooltip";
 
 function App() {
   const [data, setData] = useState([]);
   const [item, setItem] = useState("모자");
+
+  const focusRef = useRef(null);
+
   const shoppingData = async () => {
     const URL = "/v1/search/shop.json";
 
@@ -26,6 +30,7 @@ function App() {
 
   useEffect(() => {
     shoppingData();
+    focusRef.current.focus();
   }, [item]);
 
   const handleOnSubmit = (e) => {
@@ -40,13 +45,14 @@ function App() {
       </header>
       <form onSubmit={handleOnSubmit}>
         <input
+          ref={focusRef}
           type="text"
           placeholder="제품명"
           name="title"
           className="search--product"
         ></input>
         <button type="submit" className="search--button">
-          search
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
       <section>
@@ -58,12 +64,13 @@ function App() {
               let dotTilte = title.slice(0, 12) + " ...";
               return (
                 <a href={el.link} key={el.productId}>
-                  <li className="product--list">
+                  <li className="product--list" title={title}>
                     <div className="product--img--container">
                       <img src={el.image} className="product--img"></img>
                     </div>
                     <div className="product--name">{dotTilte}</div>
                   </li>
+                  <ReactTooltip />
                 </a>
               );
             })}
