@@ -21,8 +21,40 @@ header {
   color: #6bce85;
 }
 
+.main--container {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+nav {
+  width: 10%;
+  height: 100%;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav--el {
+  width: 9rem;
+  height: 100px;
+  background-color: rgba(250, 250, 250, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.nav--el:hover {
+  cursor: pointer;
+}
+
 section {
   overflow: auto;
+  width: 90%;
 }
 
 section::-webkit-scrollbar {

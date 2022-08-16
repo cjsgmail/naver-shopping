@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-import ReactTooltip from "react-tooltip";
+import Product from "./pages/Product";
 
 function App() {
   const [data, setData] = useState([]);
@@ -38,6 +38,10 @@ function App() {
     setItem(e.target.title.value);
   };
 
+  const handleOnClick = (e) => {
+    setItem(e.target.textContent);
+  };
+
   return (
     <div className="main">
       <header>
@@ -55,28 +59,26 @@ function App() {
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
-      <section>
-        <div className="product--container">
-          <ul className="products">
-            {data.map((el) => {
-              let title = el.title.replace(/\<b>/g, "");
-              title = title.replace(/\<\/b>/g, "");
-              let dotTilte = title.slice(0, 12) + " ...";
-              return (
-                <a href={el.link} key={el.productId}>
-                  <li className="product--list" title={title}>
-                    <div className="product--img--container">
-                      <img src={el.image} className="product--img"></img>
-                    </div>
-                    <div className="product--name">{dotTilte}</div>
-                  </li>
-                  <ReactTooltip />
-                </a>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
+      <div className="main--container">
+        <nav>
+          <div className="nav--el" onClick={handleOnClick}>
+            모자
+          </div>
+          <div className="nav--el" onClick={handleOnClick}>
+            가방
+          </div>
+          <div className="nav--el" onClick={handleOnClick}>
+            신발
+          </div>
+          <div className="nav--el" onClick={handleOnClick}>
+            나이키
+          </div>
+          <div className="nav--el" onClick={handleOnClick}>
+            아디다스
+          </div>
+        </nav>
+        <Product data={data} />
+      </div>
     </div>
   );
 }
